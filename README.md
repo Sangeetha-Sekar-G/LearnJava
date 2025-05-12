@@ -9,7 +9,8 @@ String basically immutable.
 To make it mutable -> StringBuffer and StringBuilder
               Diff is Threadsafe and Not threadsafe
 
-
+Comparator: If you want to specify the logic for sorting
+Comparable:  If you let the class to compare itself
 
 Imp in every language:
 Basic Syntax,
