@@ -2,6 +2,9 @@
 
 The basics things and OOPS concepts of java
 
+Dev write code(.java) -> Compiler (javac) -> Bytecode -> JVM Java virtual machine -> o/p
+JDK Java development kit (JRE Java runtime environment + (JVM+some libraries))
+
 Imp in every language:
 Basic Syntax,
 Input Output,
