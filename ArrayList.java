@@ -1,3 +1,10 @@
+/*Collection API -> concept
+Collection -> Interface
+Collections -> classe with multiple methods
+			    different type of data structures
+*/
+
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
