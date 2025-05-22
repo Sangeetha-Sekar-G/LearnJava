@@ -36,3 +36,7 @@ Javascript mastery,
 Amigoscode,
 Traversy media,
 code with dawid
+
+
+
+https://www.simplilearn.com/tutorials/java-tutorial/java-interview-questions
