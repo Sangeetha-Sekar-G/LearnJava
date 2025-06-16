@@ -3,6 +3,13 @@ Collection -> Interface
 Collections -> classe with multiple methods
 			    different type of data structures
 */
+/*
+Drawbacks:-
+- The memory allocation is contiguous.
+- The size of an array is fixed. Array size cannot be expand.
+- Searching takes time.
+- Array can store values of only same type. It can store homogeneous type value only.
+*/
 
 
 import java.util.ArrayList;
