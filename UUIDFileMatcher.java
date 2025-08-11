@@ -1,48 +1,47 @@
-package com.example.databasesearch;
-
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
-//list of ids in input file
-//directory which contains list of files
-//prints output in file, id and filename
-
 public class UUIDFileMatcher {
     public static void main(String[] args) {
-        String uuidListFile = "C:\\Users\\ssekar\\Downloads\\demo\\demo\\src\\main\\java\\com\\example\\databasesearch\\uuids.txt"; // 📃 This file contains your input UUIDs
-        String directoryPath = "C:\\AIRBNB SCRIPT\\monthlydo";   // 📁 Your local folder with text files
-        String outputFileName = "C:\\AIRBNB SCRIPT\\matched_files.txt";
+        String uuidListFile = "uuids.txt"; // 📃 This file contains your input UUIDs
+        String directoryPath = "./data";   // 📁 Your local folder with text files
+        String outputFileName = "matched_files.txt";
 
         try {
-            // 🚀 Load UUIDs into a Set
+            // ✅ Load all UUIDs into a set for quick lookup
             Set<String> uuidSet = new HashSet<>(Files.readAllLines(Paths.get(uuidListFile)));
 
-            // 🔧 Prepare writer for output
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
 
+            // 🚀 Loop through files in the directory
             File dir = new File(directoryPath);
-            File[] files = dir.listFiles(file -> file.isFile()); // all files, excluding folders
+            File[] files = dir.listFiles((d, name) -> name.endsWith(".txt")); // Adjust extension if needed
 
             if (files != null) {
                 for (File file : files) {
+                    boolean found = false;
                     try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                         String line;
                         while ((line = reader.readLine()) != null) {
                             for (String uuid : uuidSet) {
                                 if (line.contains(uuid)) {
-                                    System.out.println(uuid + "\t" + file.getName());
-                                    writer.write(uuid + "\t" + file.getName());
-                                    writer.newLine();
+                                    found = true;
+                                    break;
                                 }
                             }
+                            if (found) break;
                         }
+                    }
+                    if (found) {
+                        writer.write(file.getName());
+                        writer.newLine();
                     }
                 }
             }
 
             writer.close();
-            System.out.println("✅ Finished! Matches written to: " + outputFileName);
+            System.out.println("Matching filenames written to " + outputFileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
